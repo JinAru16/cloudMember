@@ -21,7 +21,6 @@ public class JasyptConfig {
         encryptor.setPassword(password);
         encryptor.setSaltGenerator(new ZeroSaltGenerator());
         encryptor.setIvGenerator(new NoIvGenerator());
-        https://github.com/JinAru16/msaCommon
         return encryptor;
     }
 }
