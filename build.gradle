@@ -28,11 +28,11 @@ ext {
 }
 
 dependencies {
-    // implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.cloud:spring-cloud-starter-config'
     implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.18.2' // 🔥 버전 맞춰서 사용
-   // implementation project(':common')
+    implementation project(':common')
     implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.5'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
