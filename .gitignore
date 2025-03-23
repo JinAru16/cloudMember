@@ -38,6 +38,3 @@ out/
 
 ### application ###
 *.yml
-
-### module ###
-common
