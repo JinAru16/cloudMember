@@ -1,4 +1,5 @@
 package com.msa.member.search.controller;
+import com.msa.member.search.domain.response.AddressResponse;
 import com.msa.member.search.domain.response.MemberResponse;
 import com.msa.member.search.service.SearchService;
 import lombok.RequiredArgsConstructor;
@@ -24,5 +25,11 @@ public class SearchController {
     public ResponseEntity<?> findMemberById(@PathVariable Long id){
         MemberResponse member = searchService.findById(id);
         return ResponseEntity.ok(member);
+    }
+
+    @GetMapping("/address/{id}")
+    public ResponseEntity<?> getAddress(@PathVariable Long id){
+        AddressResponse address = searchService.findAddressByMemberId(id);
+        return ResponseEntity.ok(address);
     }
 }
