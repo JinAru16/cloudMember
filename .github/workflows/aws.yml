@@ -36,9 +36,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
+    - name: Checkout repository with submodules
       uses: actions/checkout@v4
-      # GitHub Actions VM 환경의 IP를 받아온다.
+      with:
+        submodules: true
+    # GitHub Actions VM 환경의 IP를 받아온다.
     - name: Get Public IP
       id: ip
       uses: haythem/public-ip@v1.3
