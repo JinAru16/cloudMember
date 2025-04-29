@@ -1,2 +1,3 @@
+rootProject.name = 'cloudMember'
 include ':commonclass'
 project(':commonclass').projectDir = file('commonclass')

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/search")
 @RequiredArgsConstructor
@@ -17,8 +19,9 @@ public class SearchController {
     private final SearchService searchService;
 
     @GetMapping("/member")
-    public void memberList(){
-        searchService.findAllMember();
+    public ResponseEntity<?> memberList(){
+        List<MemberResponse> allMember = searchService.findAllMember();
+        return ResponseEntity.ok(allMember);
     }
 
     @GetMapping("/member/{id}")
