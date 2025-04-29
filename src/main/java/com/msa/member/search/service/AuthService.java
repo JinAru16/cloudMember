@@ -32,8 +32,6 @@ public class AuthService {
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-       // String nickname = userRepository.findUsersByUsername(loginRequest.getUsername()).getNickname();
-
         // JWT 발급
         String jwt = jwtTokenProvider.generateAuthToken(authentication);
         ResponseCookie jwtCookie = ResponseCookie.from("jwt", jwt)
