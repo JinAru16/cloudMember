@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AddressResponse {
     private Long memberId;
+    private String username;
     private String address1;
     private String address2;
     private String city;
@@ -22,6 +23,7 @@ public class AddressResponse {
             throw new MemberException("해당 회원의 주소가 존재하지않습니다.");
         }
         this.memberId = users.getId();
+        this.username = users.getUsername();
         this.address1 = users.getAddress().getAddress1();
         this.address2 = users.getAddress().getAddress2();
         this.city = users.getAddress().getCity();
@@ -32,8 +34,9 @@ public class AddressResponse {
     }
 
     @Builder
-    public AddressResponse(Long memberId, String address1, String address2, String city, String state, String country, String postalCode) {
+    public AddressResponse(Long memberId, String username, String address1, String address2, String city, String state, String country, String postalCode) {
         this.memberId = memberId;
+        this.username =
         this.address1 = address1;
         this.address2 = address2;
         this.city = city;

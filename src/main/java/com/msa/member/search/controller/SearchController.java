@@ -4,6 +4,7 @@ import com.msa.member.search.domain.response.MemberResponse;
 import com.msa.member.search.service.SearchService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +28,12 @@ public class SearchController {
     @GetMapping("/member/{id}")
     public ResponseEntity<?> findMemberById(@PathVariable Long id){
         MemberResponse member = searchService.findById(id);
+        return ResponseEntity.ok(member);
+    }
+
+    @GetMapping("/member/address")
+    public ResponseEntity<?> findAddressByUsername(@AuthenticationPrincipal String username){
+        AddressResponse member = searchService.findAddressByUsername(username);
         return ResponseEntity.ok(member);
     }
 

@@ -1,5 +1,6 @@
 package com.msa.member.search.service;
 
+import com.msa.common.entity.Address;
 import com.msa.member.exception.MemberException;
 import com.msa.member.search.domain.response.AddressResponse;
 import com.msa.member.search.domain.response.MemberResponse;
@@ -21,21 +22,25 @@ public class SearchService {
     }
 
     public MemberResponse findById(Long id) {
-        Optional<Users> byId = searchRepository.findById(id);
-        if (byId.isPresent()) {
-            return new MemberResponse(byId.get());
-        } else{
-            throw new MemberException("해당 회원은 존재하지않습니다.");
-        }
+        return new MemberResponse(
+                searchRepository.findById(id)
+                      .orElseThrow(() ->new MemberException("해당회원이 존재하지않습니다."))
+        );
+
     }
 
     public AddressResponse findAddressByMemberId(Long id) {
-        Optional<Users> byId = searchRepository.findById(id);
-        if (byId.isPresent()) {
-            return new AddressResponse(byId.get());
-        }
-        else {
-            throw new MemberException("해당 회원이 존재하지않습니다.");
-        }
+        return new AddressResponse(
+                searchRepository.findById(id)
+                    .orElseThrow(() -> new MemberException("해당회원이 존재하지않습니다."))
+        );
+    }
+
+    public AddressResponse findAddressByUsername(String username) {
+       //  Address address = searchRepository.findByUsername(username).get().getAddress();
+        return new AddressResponse(
+                searchRepository.findByUsername(username)
+                    .orElseThrow(() -> new MemberException("해당회원이 존재하지않습니다."))
+        );
     }
 }

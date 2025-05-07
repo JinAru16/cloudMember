@@ -1,5 +1,6 @@
 package com.msa.member.search.domain.response;
 
+import com.msa.common.entity.Address;
 import com.msa.common.entity.Users;
 import lombok.Getter;
 import com.msa.common.entity.Role;
@@ -10,6 +11,7 @@ public class MemberResponse {
     private String username;
     private String nickname;
     private String email;
+    private Address address;
     private Role role;
 
     public MemberResponse(Users users) {
@@ -17,6 +19,7 @@ public class MemberResponse {
         this.username = users.getUsername();
         this.nickname = users.getNickname();
         this.email = users.getEmail();
+        this.address = users.getAddress();
         this.role = users.getRole();
     }
 }
